@@ -1,8 +1,26 @@
+
+/* BASICS */
 *{
     box-sizing: border-box;
 }
 
 body{
-    background-color: cornflowerblue;
-    text-align: center;
+    margin: 0;
 }
+
+canvas{
+    border: 2px solid black;
+}
+
+/* LAYOUT */
+
+.canvas-container{
+    background-color: cornflowerblue;
+}
+
+/* HELPERS */
+
+.flex{
+    display: flex;
+}
+

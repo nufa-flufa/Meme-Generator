@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,21 @@
     <title>Meme-Generator</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Welcone to Meme-Generator</h1>
 
-    
+<body onload="onInit()">
+    <div class="canvas-container">
+        <canvas id="meme-canvas" height="600" width="600"></canvas>
+        <form onsubmit="onDrawText(event)">
+            <input type="text" placeholder="Write your text here" name="txt1">
+        </form>
+    </div>
+
+
     <script src="js/service/utils.js"></script>
     <script src="js/service/meme-storage.js"></script>
     <script src="js/service/img-bank.js"></script>
     <script src="js/service/meme-service.js"></script>
     <script src="js/controller.js"></script>
 </body>
+
 </html>
