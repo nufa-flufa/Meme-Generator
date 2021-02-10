@@ -16,6 +16,15 @@ function onDrawImg() {
     drawImg();
 }
 
+
+function onDrawText(ev) {
+    ev.preventDefault();
+    var currText = document.querySelector('input[name=txt1]').value;
+    gMeme.lines[0].txt = currText;
+    drawText();
+    currText = '';
+}
+
 function addMouseListener(){
     gElCanvas.addEventListener('mousedown', getPos)
 }
@@ -27,12 +36,4 @@ function getPos(ev){
     }
     console.log(pos)
     onDrawText()
-}
-
-function onDrawText(ev) {
-   ev.preventDefault();
-   var currText = document.querySelector('input[name=txt1]').value;
-   gMeme.lines[0].txt = currText;
-   drawText();
-   currText = '';
 }
