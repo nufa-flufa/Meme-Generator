@@ -1,7 +1,7 @@
 'use strict'
 
 var gMeme = {
-    selectedImgId: 3,
+    selectedImgId: 0,
     selectedLineIdx: 0,
     lines: [
         {
@@ -13,9 +13,10 @@ var gMeme = {
     ],
 }
 
+
 function drawImg() {
     const img = new Image();
-    var selectedImg= gImgs.find((img) => {
+    var selectedImg = gImgs.find((img) => {
         return gMeme.selectedImgId === img.id
     })
     img.src = selectedImg.url
@@ -30,8 +31,8 @@ function drawText(){
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = gMeme.color;
     gCtx.fillStyle =  'white';
-    gCtx.font = '60px Impact';
+    gCtx.font = '50px Impact';
     gCtx.textAlign = 'center'
-    gCtx.fillText(txt, 300, 100)
-    gCtx.strokeText(txt, 300, 100)
+    gCtx.fillText(txt,250, 100)
+    gCtx.strokeText(txt, 250, 100)
 }

@@ -11,6 +11,9 @@ body{
 canvas{
     border: 2px solid black;
 }
+img{
+    
+}
 
 /* LAYOUT */
 
@@ -18,9 +21,39 @@ canvas{
     background-color: cornflowerblue;
 }
 
+.image-item{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imgs-gallery{
+    display: grid;
+    grid-gap: 15px;
+}
+
+/* Components */
+
+.imgs-gallery{
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+
+
 /* HELPERS */
 
 .flex{
     display: flex;
+}
+
+.flex-direction{
+    flex-direction: column;
+}
+
+.justify-content{
+    justify-content: center;
+}
+.align-items{
+    align-items: center;
 }
 
