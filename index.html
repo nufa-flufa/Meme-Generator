@@ -12,26 +12,30 @@
 <body onload="onInit()">
     <header class="main-header ">
         <div class="main-nav main-container flex space-between align-items">
-
             <h2 class="logo">Meme-Gen </h2>
             <div class="nav-bar">
                 <ul class="clean-list flex">
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#" onclick="onOpenGalleryModal()">Gallery</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </div>
         </div>
     </header>
     <main class="main-container main-contant">
+        <div class="imgs-gallery">
+        </div>
         <div class="canvas-container flex justify-content align-items">
             <canvas id="meme-canvas" height="500" width="500"></canvas>
             <div class="control-board ">
-                <form onsubmit="onChangeCanvas(event)" >
-                    <input class="txt-input" type="text" placeholder="Write your text here" name="txt1" >
+                <form onsubmit="onChangeCanvas(event)">
+                    <input class="txt-input" type="text" placeholder="Write your text here" name="txt1">
                 </form>
+                <button class="btn download-btn"><a href="#" onclick="onDownloadCanvas(this)"
+                        download="">Download</a></button>
                 <button class="btn switch-line-btn" onclick="onChangeLineFocus()">⇅</button>
                 <button class="btn add-line-btn" onclick="onAddLine()">➕</button>
-                <button class="btn delete-btn" onclick="onRemoveText()"><img src="./des-img/32-512.png" style="height: 40px; width: 40px;"></button>
+                <button class="btn delete-btn" onclick="onRemoveText()"><img src="./des-img/32-512.png"
+                        style="height: 40px; width: 40px;"></button>
                 <button class="btn submit-btn" onclick="renderCanvas()">Submit</button>
                 <button class="btn plus-btn" onclick="onChangeFontSize('+')">A+</button>
                 <button class="btn minus-btn" onclick="onChangeFontSize('-')">A-</button>
@@ -39,8 +43,7 @@
                 <button class="btn down-btn" onclick="onMoveText('down')">⮟</button>
             </div>
         </div>
-        <div class="imgs-gallery">
-        </div>
+
 
     </main>
     <footer class="main-footer flex align-items">
@@ -49,6 +52,7 @@
             <p>all rights reserved 2021</p>
         </div>
     </footer>
+
 
     <script src="js/service/utils.js"></script>
     <script src="js/service/meme-storage.js"></script>

@@ -76,6 +76,13 @@ function addLineObject() {
     gMeme.lines.push(newLine);
     console.log(gMeme)
 }
+
+function downloadCanvas(elLink){
+    const data = gElCanvas.toDataURL()
+    // console.log('downloadCanvas -> data', data)
+    elLink.href = data
+    elLink.download = 'Meme-Generator'
+}
 // x = gElCanvas.width / 2, y = gElCanvas.height / (gElCanvas.height / 100)
 // function getPos(ev) {
 //     var pos = {
@@ -83,4 +90,8 @@ function addLineObject() {
 //         y: ev.offsetY
 //     }
 //     // console.log(pos)
+// }
+
+// function setNewGridSetting(){
+
 // }

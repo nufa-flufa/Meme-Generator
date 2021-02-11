@@ -34,6 +34,8 @@ function renderImgGallery() {
 function onChangeImg(el) {
     var newImgId = parseInt(el.dataset.number)
     gMeme.selectedImgId = newImgId;
+    document.querySelector('.imgs-gallery').style.display = 'none'
+    document.querySelector('.canvas-container').style.display = 'flex'
     renderCanvas();
 }
 
@@ -46,8 +48,7 @@ function onAddLine() {
     if(gMeme.lines.length === 2) return;
     var elForm = document.querySelector('form')
     let newTxtLine = document.createElement('div')
-    var strHTML = `<input class="txt-input" type="text" placeholder="Write your text here" name="txt2">
-    `
+    var strHTML = `<input class="txt-input" type="text" placeholder="Write your text here" name="txt2">`
     elForm.appendChild(newTxtLine).innerHTML = strHTML
     gMeme.selectedLineIdx += 1;
     // elForm.appendChild(newTxtLine).style.grid = ''
@@ -81,6 +82,16 @@ function onChangeLineFocus() {
         document.querySelector(`input[name=txt1]`).style.border = 'none';
 
     }
+}
+
+function onOpenGalleryModal(){
+    document.querySelector('.imgs-gallery').style.display = 'grid'
+    document.querySelector('.canvas-container').style.display = 'none'
+}
+
+function onDownloadCanvas(elLink) {
+    console.log(elLink)
+   downloadCanvas(elLink)
 }
 
 function addMouseListener() {
