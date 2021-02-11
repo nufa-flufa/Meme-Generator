@@ -14,7 +14,6 @@ var gMeme = {
     ],
 }
 
-
 function drawImg() {
     const img = new Image();
     var selectedImg = gImgs.find((img) => {
@@ -28,6 +27,10 @@ function drawImg() {
 }
 
 function drawText() {
+    var currInputTxtVal = (gMeme.selectedLineIdx === 1) ? 'input[name=txt2]' : 'input[name=txt1]';
+    var currText = document.querySelector(currInputTxtVal).value;
+    gMeme.lines[gMeme.selectedLineIdx].txt = currText;
+
     gMeme.lines.map((line) => {
         var posX = line.pos.x
         var posY = line.pos.y
@@ -42,19 +45,21 @@ function drawText() {
 
 }
 
-function getPos(ev) {
-    var pos = {
-        x: ev.offsetX,
-        y: ev.offsetY
-    }
-    // console.log(pos)
+function moveText(direction) {
+    if (direction === 'up') gMeme.lines[gMeme.selectedLineIdx].pos.y -= 20;
+    else if (direction === 'down') gMeme.lines[gMeme.selectedLineIdx].pos.y += 20;
+}
+
+function changeFontSize(sign){
+    if (sign === '+') gMeme.lines[gMeme.selectedLineIdx].size += 10
+    else if (sign === '-') gMeme.lines[gMeme.selectedLineIdx].size -= 10
 }
 
 function removeLine() {
     console.log('txt', gMeme.lines[gMeme.selectedLineIdx.txt])
     gMeme.lines[gMeme.selectedLineIdx].txt = '';
     console.log('selectedLineIdx:', gMeme.selectedLineIdx)
-    document.querySelector('input[name=txt1]').value = '';
+    document.querySelector(`input[name=txt${gMeme.selectedLineIdx + 1}]`).value = '';
     console.log('txt after', gMeme.lines[gMeme.selectedLineIdx].txt)
 }
 
@@ -72,3 +77,10 @@ function addLineObject() {
     console.log(gMeme)
 }
 // x = gElCanvas.width / 2, y = gElCanvas.height / (gElCanvas.height / 100)
+// function getPos(ev) {
+//     var pos = {
+//         x: ev.offsetX,
+//         y: ev.offsetY
+//     }
+//     // console.log(pos)
+// }

@@ -20,13 +20,9 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     if (!gMeme.selectedImgId) return;
     drawImg();
-
-    var currInputTxtVal = (gMeme.selectedLineIdx === 1) ? 'input[name=txt2]' : 'input[name=txt1]';
-    var currText = document.querySelector(currInputTxtVal).value;
-    gMeme.lines[gMeme.selectedLineIdx].txt = currText;
+    
     setTimeout(drawText, 100);
 }
-
 
 function renderImgGallery() {
     var strHTMLs = gImgs.map((img) => {
@@ -50,46 +46,43 @@ function onAddLine() {
     if(gMeme.lines.length === 2) return;
     var elForm = document.querySelector('form')
     let newTxtLine = document.createElement('div')
-    var strHTML = `<input class="txt-input" type="text" placeholder="Write your text here" name="txt2">`
+    var strHTML = `<input class="txt-input" type="text" placeholder="Write your text here" name="txt2">
+    `
     elForm.appendChild(newTxtLine).innerHTML = strHTML
     gMeme.selectedLineIdx += 1;
-    // console.log('',gMeme.selectedLineIdx)
-    // elForm.appendChild(newTxtLine).style.gridRow= '2/3';
-    // elForm.appendChild(newTxtLine).style.gridColumn= '8/9';
+    // elForm.appendChild(newTxtLine).style.grid = ''
+    
     addLineObject();
 }
-
 
 function onChangeFontSize(sign) {
     if (gMeme.lines[gMeme.selectedLineIdx].size < 20) return;
     if (gMeme.lines[gMeme.selectedLineIdx].size > 300) return;
 
-    if (sign === '+') gMeme.lines[gMeme.selectedLineIdx].size += 10
-    else if (sign === '-') gMeme.lines[gMeme.selectedLineIdx].size -= 10
+    changeFontSize(sign)
 
     renderCanvas();
 }
 
 function onMoveText(direction) {
-    if (direction === 'up') gMeme.lines[gMeme.selectedLineIdx].pos.y -= 20;
-    else if (direction === 'down') gMeme.lines[gMeme.selectedLineIdx].pos.y += 20;
-
+    moveText(direction)
     renderCanvas();
 }
 
 function onChangeLineFocus() {
     if (gMeme.selectedLineIdx === 1) {
         gMeme.selectedLineIdx = 0;
-        document.querySelector(`input[name=txt1]`).style.border = '3px solid black';
+        document.querySelector(`input[name=txt1]`).style.border = '2px solid #2e1e31';
         document.querySelector(`input[name=txt2]`).style.border = 'none';
     }
     else {
         gMeme.selectedLineIdx = 1;
-        document.querySelector(`input[name=txt2]`).style.border = '3px solid black';
+        document.querySelector(`input[name=txt2]`).style.border = '2px solid #2e1e31';
         document.querySelector(`input[name=txt1]`).style.border = 'none';
 
     }
 }
+
 function addMouseListener() {
     window.addEventListener('mousedown', getPos)
 }
