@@ -1,4 +1,15 @@
 
+
+@font-face {
+    font-family: sigmar-one;
+    src: url(../fonts/sigmar-one/SigmarOne-Regular.ttf);
+}
+
+@font-face{
+    font-family: fjalla-one ;
+    src:url(../fonts/fjalla-one/FjallaOne-Regular.ttf);
+}
+
 /* BASICS */
 *{
     box-sizing: border-box;
@@ -6,21 +17,33 @@
 
 body{
     margin: 0;
+    background-color: #FFE8FF;
+    height: 100vh;
 }
 
 canvas{
     border: 2px solid black;
 }
+h1,h2,h3,h4{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style-type: none;
+}
 img{
-    
+    cursor: pointer;
 }
 
 /* LAYOUT */
 
-
-.canvas-container{
-    background-color: cornflowerblue;
+.main-container{
+    max-width: 1200px;
+    margin: auto;
 }
+
 
 .image-item{
     width: 100%;
@@ -35,50 +58,108 @@ img{
 
 /* Components */
 
+/*  HEADER */
+
+.main-header{
+    background-color: #A680AE;
+    margin: 0;
+}
+.main-nav{
+    margin: auto;
+}
+.logo{
+    font-family: fjalla-one;
+    font-size : 60px;
+}
+
+.clean-list li{
+    font-size:20px;
+    margin-right:10px;
+}
+.clean-list a{
+    color:#FFE8FF;
+}
+.clean-list a:hover{
+    border-bottom: none;
+
+}
+
+  /* GALLERY */
+
 .imgs-gallery{
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
+  /* CONTROL BOARD */
+
 .control-board{
     border: 2px solid black;
     display: grid;
-    grid-template-columns: 1fr 10px 1fr 1fr 1fr 1fr 1fr 10px 1fr ;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: 1fr 1fr .5fr 10px 10px .5fr 1fr .5fr 1fr 10px 1fr 1fr;
+    grid-template-rows: repeat(8,60px);
     grid-gap:10px;
 }
 
-input{
+.txt-input{
     height: 60px;
     width: 370px;
+    border-radius: 5px;
 }
 
 form{
     grid-row: 2/3;
-    grid-column: 3/8;
+    grid-column: 3/10;
+}
+.btn{
+    height: 3.75rem;
+    width: 3.75rem;
+    border: none;
+    border-radius:.6rem ;
+    background-color: #4E4351;
+    color: cornsilk;
+    font-size: 1.2rem;
+    cursor: pointer;
+
 }
 .submit-btn{
     margin-top: 20px;
-    width: 100px;
+    width: 180px;
     grid-column: 4/7;
     grid-row: 7/8;
 }
 .plus-btn{
-    grid-column: 4/5;
+    grid-column: 3/6;
     grid-row: 4/5;
 }
 
 .minus-btn{
-    grid-column: 5/6;
-    grid-row: 4/5;
-}
-.up-btn{
     grid-column: 6/7;
     grid-row: 4/5;
 }
-.down-btn{
+.up-btn{
     grid-column: 7/8;
     grid-row: 4/5;
 }
+.down-btn{
+    grid-column: 8/9;
+    grid-row: 4/5;
+}
+.delete-btn{
+    grid-column: 3/6;
+    grid-row: 3/4;
+}
+.add-line-btn{
+    grid-column: 6/7;
+    grid-row: 3/4;
+}
+
+
+  /* FOOTER */
+
+  .main-footer{
+      background-color:#A680AE ;
+      height: 205px;
+  }
 
 /* HELPERS */
 
@@ -92,6 +173,9 @@ form{
 
 .justify-content{
     justify-content: center;
+}
+.space-between{
+    justify-content: space-between;
 }
 .align-items{
     align-items: center;
