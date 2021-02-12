@@ -1,5 +1,9 @@
 'use strict'
 
+const GALLERY_KEY = 'imgs gallery'
+const USER_MEMES = 'memes'
+
+var gUserMemes = [];
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
@@ -14,15 +18,42 @@ var gMeme = {
     ],
 }
 
+function loadSavedMemes() {
+    console.log('hello')
+    var strHTML = '';
+    for (var i = 1; i <= gUserMemes.length; i++) {
+        strHTML += `<canvas id="user-meme saved${i}" height="200" width="200" contenteditable=""></canvas>`
+    }
+    document.querySelector('.user-memes').innerHTML = strHTML;
+
+    var i = 1;
+    gUserMemes.map((url) => {
+        var canvas = document.getElementById(`user-meme saved${i}`);
+        var ctx = canvas.getContext('2d');
+        var img = new Image;
+        img.src = url;
+        img.onload = () => {
+            let height = getHeightRatio(canvas.width, img.height, img.width)
+            let width = getWidthRatio(canvas.height, img.height, img.width)
+            ctx.drawImage(img, 0, 0, height, width)
+        }
+        i++;
+    })
+}
+
 function drawImg() {
     const img = new Image();
     var selectedImg = gImgs.find((img) => {
         return gMeme.selectedImgId === img.id
     })
     img.src = selectedImg.url
+    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width)
+    var canvasWidth = getWidthRatio(gElCanvas.height, img.height, img.width)
+    console.log('width:', canvasWidth)
+    console.log('height:', canvasHeight)
 
     img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, canvasHeight);
     }
 }
 
@@ -50,7 +81,7 @@ function moveText(direction) {
     else if (direction === 'down') gMeme.lines[gMeme.selectedLineIdx].pos.y += 20;
 }
 
-function changeFontSize(sign){
+function changeFontSize(sign) {
     if (sign === '+') gMeme.lines[gMeme.selectedLineIdx].size += 10
     else if (sign === '-') gMeme.lines[gMeme.selectedLineIdx].size -= 10
 }
@@ -77,21 +108,19 @@ function addLineObject() {
     console.log(gMeme)
 }
 
-function downloadCanvas(elLink){
+function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()
     // console.log('downloadCanvas -> data', data)
     elLink.href = data
     elLink.download = 'Meme-Generator'
 }
+
+function _saveMemeToStorage() {
+    saveToStorage(USER_MEMES, gMeme)
+}
+function _saveImgsToStorage() {
+    saveToStorage(GALLERY_KEY, gImgs)
+}
+
+
 // x = gElCanvas.width / 2, y = gElCanvas.height / (gElCanvas.height / 100)
-// function getPos(ev) {
-//     var pos = {
-//         x: ev.offsetX,
-//         y: ev.offsetY
-//     }
-//     // console.log(pos)
-// }
-
-// function setNewGridSetting(){
-
-// }
