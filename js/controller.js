@@ -118,6 +118,7 @@ function onDownloadCanvas(elLink) {
 function onSaveMeme() {
     gUserMemes.push(gElCanvas.toDataURL());
     saveToStorage(USER_MEMES, gUserMemes);
+    onOpenUserMemesGallery()
 }
 
 function onLoadSavedMemes() {
@@ -157,6 +158,11 @@ function onSetLang(lang) {
 function onSetFilter(filter) {
     setFilter(filter);
     renderImgGallery();
+}
+
+function onUploadSavedMeme(id) {
+    uploadSavedMeme(id)
+
 }
 // function addMouseListener() {
 //     window.addEventListener('mousedown', getPos);

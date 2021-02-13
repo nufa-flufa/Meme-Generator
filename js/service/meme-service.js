@@ -46,7 +46,7 @@ function loadSavedMemes() {
     })
 }
 
-function onUploadSavedMeme(id) {
+function uploadSavedMeme(id) {
     const img = new Image();
     var chosenMemeImg = gSavedMemsURLs.find((meme) => {
         return meme.id === id;

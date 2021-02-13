@@ -25,7 +25,7 @@ function loadImageFromInput(ev, onImageReady) {
 }
 
 
-function renderImg(img) {
+function renderImg() {
     renderCanvas()
     document.querySelector('.imgs-gallery').style.display = 'none';
     document.querySelector('.search-nav').style.display = 'none';
