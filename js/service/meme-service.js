@@ -5,6 +5,7 @@ const USER_MEMES = 'memes'
 
 var gUserMemes = [];
 var gSavedMemsURLs = [];
+var gImgsFilter = 'all';
 
 var gMeme = {
     selectedImgId: 0,
@@ -22,7 +23,6 @@ var gMeme = {
 }
 
 function loadSavedMemes() {
-    console.log('hello')
     var strHTML = '';
     for (var i = 1; i <= gUserMemes.length; i++) {
         strHTML += `<canvas id="user-meme saved${i}" height="200" width="200" onclick="onUploadSavedMeme(${i})"></canvas>`
@@ -35,12 +35,11 @@ function loadSavedMemes() {
         var ctx = canvas.getContext('2d');
         var img = new Image;
         img.src = url;
-        var savedImgInfo = createImgURLObject(i, url);
-        gSavedMemsURLs.push(savedImgInfo);
+        createImgURLObject(i, url);
         img.onload = () => {
-            let height = getHeightRatio(canvas.width, img.height, img.width)
-            canvas.height = height
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+            let height = getHeightRatio(canvas.width, img.height, img.width);
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         }
         i++;
     })
@@ -49,11 +48,11 @@ function loadSavedMemes() {
 function onUploadSavedMeme(id) {
     const img = new Image();
     var chosenMemeImg = gSavedMemsURLs.find((meme)=>{
-        return meme.id === id
+        return meme.id === id;
     });
     img.src = chosenMemeImg.url;
-    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width)
-    gElCanvas.height = canvasHeight
+    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
+    gElCanvas.height = canvasHeight;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, canvasHeight);
     }
@@ -63,12 +62,12 @@ function onUploadSavedMeme(id) {
 function drawImg() {
     const img = new Image();
     var selectedImg = gImgs.find((img) => {
-        return gMeme.selectedImgId === img.id
+        return gMeme.selectedImgId === img.id;
     })
-    img.src = selectedImg.url
-    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width)
-    // var canvasWidth = getWidthRatio(gElCanvas.height, img.height, img.width)
-    gElCanvas.height = canvasHeight
+    img.src = selectedImg.url;
+    console.log(img.src);
+    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
+    gElCanvas.height = canvasHeight;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, canvasHeight);
     }
@@ -79,19 +78,18 @@ function drawText() {
     var currText = document.querySelector(currInputTxtVal).value;
 
     gMeme.lines[gMeme.selectedLineIdx].txt = currText;
-    console.log(gMeme.lines[gMeme.selectedLineIdx])
+    
     gMeme.lines.map((line) => {
-        var posX = line.pos.x
-        var posY = line.pos.y
+        var posX = line.pos.x;
+        var posY = line.pos.y;
         gCtx.lineWidth = 2;
         gCtx.strokeStyle = 'black';
         gCtx.fillStyle = `${line.color}`;
         gCtx.font = `${line.size}px ${line.font}`;
-        gCtx.textAlign = 'center'
-        gCtx.fillText(line.txt, posX, posY)
-        gCtx.strokeText(line.txt, posX, posY)
-    })
-    console.log(gMeme.lines[1].txt)
+        gCtx.textAlign = 'center';
+        gCtx.fillText(line.txt, posX, posY);
+        gCtx.strokeText(line.txt, posX, posY);
+    });
 }
 
 function moveText(direction) {
@@ -100,8 +98,8 @@ function moveText(direction) {
 }
 
 function changeFontSize(sign) {
-    if (sign === '+') gMeme.lines[gMeme.selectedLineIdx].size += 10
-    else if (sign === '-') gMeme.lines[gMeme.selectedLineIdx].size -= 10
+    if (sign === '+') gMeme.lines[gMeme.selectedLineIdx].size += 10;
+    else if (sign === '-') gMeme.lines[gMeme.selectedLineIdx].size -= 10;
 }
 
 function removeLine() {
@@ -117,30 +115,35 @@ function addLineObject() {
         align: 'left',
         color: 'white',
         font: 'impact',
-        pos: (gMeme.lines.length === 1) ? { x: 250, y: 400 } : { x: 250, y: 250 },
-    }
+        pos: (gElCanvas.height === 300)  ? { x: 250, y: 400 } : { x: 250, y:290 },
+    };
     gMeme.lines.push(newLine);
 }
 
 function downloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'Meme-Generator'
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'Meme-Generator';
 }
 
 function changeTextColor(val) {
-    gMeme.lines[gMeme.selectedLineIdx].color = val
+    gMeme.lines[gMeme.selectedLineIdx].color = val;
 }
 
 function changeFont(val) {
     gMeme.lines[gMeme.selectedLineIdx].font = val;
 }
 
+function setFilter(filter){
+    if (!filter) gImgsFilter = 'all';
+    else gImgsFilter = filter;  
+}
+
 function _saveMemeToStorage() {
-    saveToStorage(USER_MEMES, gMeme)
+    saveToStorage(USER_MEMES, gMeme);
 }
 function _saveImgsToStorage() {
-    saveToStorage(GALLERY_KEY, gImgs)
+    saveToStorage(GALLERY_KEY, gImgs);
 }
 
 

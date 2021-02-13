@@ -1,5 +1,4 @@
 'use strict'
-console.log('i8n connected')
 
 var gCurrLang = 'en';
 
@@ -40,9 +39,9 @@ var gTrans = {
 }
 
 function doTrans() {
-    var els = document.querySelectorAll('[data-trans]')
+    var els = document.querySelectorAll('[data-trans]');
     els.forEach(function (el) {
-        var transKey = el.dataset.trans
+        var transKey = el.dataset.trans;
         var txt = getTrans(transKey);
 
         if (el.nodeName === 'INPUT') {
@@ -58,7 +57,6 @@ function getTrans(transKey) {
     if (!keyTrans) return 'UNKNOWN';
     var txt = keyTrans[gCurrLang];
 
-    // if not found return en
     if (!txt) txt = keyTrans['en'];
     return txt;
 }

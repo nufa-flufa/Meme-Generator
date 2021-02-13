@@ -25,6 +25,28 @@
                 </ul>
             </div>
         </div>
+        <div class="search-nav">
+            <div class="search main-container flex align-items justify-content">
+                <input type="search" list="key-words" oninput="onSetFilter(this.value)">
+                <datalist id="key-words">
+                    <option data-trans="funny" value="funny">
+                    <option data-trans="movie" value="movie">
+                    <option data-trans="politics" value="politics">
+                    <option data-trans="friendship" value="friendship">
+                    <option data-trans="laugh" value="laugh">
+                    <option data-trans="baby" value="baby">
+                    <option data-trans="trump" value="trump">
+                    <option data-trans="putin" value="putin">
+                    <option data-trans="sleep" value="sleep">
+                    <option data-trans="work" value="work">
+                    <option data-trans="cute" value="cute">
+                    <option data-trans="puppy" value="puppy">
+                    <option data-trans="cat" value="cat">
+                    <option data-trans="animal" value="animal">
+                </datalist>
+                <h3>We didn't find anything</h3>
+            </div>
+        </div>
     </header>
     <main class="main-container main-contant">
         <div class="imgs-gallery">
@@ -33,16 +55,17 @@
             <canvas id="meme-canvas" height="500" width="500" contenteditable=""></canvas>
             <div class="control-board ">
                 <form oninput="onChangeCanvas(event)">
-                    <input class="txt-input" type="text" placeholder="Write your text here" name="txt1" data-trans="txt-input">
+                    <input class="txt-input" type="text" placeholder="Write your text here" name="txt1"
+                        data-trans="txt-input">
                 </form>
-                <button class="btn download-btn"><a href="#" onclick="onDownloadCanvas(this)"
-                        download="" data-trans="download">Download</a></button>
-                <button class="btn save-btn" onclick="onSaveMeme()" style="font-size: 1rem;" data-trans="save">save meme</button>
+                <button class="btn download-btn"><a href="#" onclick="onDownloadCanvas(this)" download=""
+                        data-trans="download">Download</a></button>
+                <button class="btn save-btn" onclick="onSaveMeme()" style="font-size: 1rem;" data-trans="save">save
+                    meme</button>
                 <button class="btn switch-line-btn" onclick="onChangeLineFocus()">⇅</button>
                 <button class="btn add-line-btn" onclick="onAddLine()">➕</button>
                 <button class="btn delete-btn" onclick="onRemoveText()"><img src="./des-img/32-512.png"
                         style="height: 40px; width: 40px;"></button>
-                <button class="btn submit-btn" onclick="renderCanvas()" data-trans="submit">Submit</button>
                 <button class="btn bigger-font-btn" onclick="onChangeFontSize('+')">A+</button>
                 <button class="btn smaller-font-btn" onclick="onChangeFontSize('-')">A-</button>
                 <button class="btn up-btn" onclick="onMoveText('up')">⮝</button>
@@ -53,15 +76,15 @@
                     <option value="Arial">Arial</option>
                     <option value="Times new roman">Times New Roman</option>
                     <option value="fjalla-one">Fjalla-one</option>
-                </select>   
-                <input class="font-color" type="color" value="#fdffff" onchange="onChangeTextColor(value)" name="font-color">
+                    <option value="sigmar-one">Sigmar-one</option>
+                </select>
+                <input class="font-color" type="color" value="#fdffff" oninput="onChangeTextColor(value)"
+                    name="font-color">
             </div>
         </div>
         <div class="user-memes main-container">
-            
+
         </div>
-
-
     </main>
     <footer class="main-footer flex align-items">
         <div class="footer-content main-container flex align-items justify-content flex-direction">
