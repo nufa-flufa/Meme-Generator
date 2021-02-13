@@ -12,6 +12,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
+            isDragging: false,
             txt: '',
             size: 40,
             align: 'left',
@@ -47,7 +48,7 @@ function loadSavedMemes() {
 
 function onUploadSavedMeme(id) {
     const img = new Image();
-    var chosenMemeImg = gSavedMemsURLs.find((meme)=>{
+    var chosenMemeImg = gSavedMemsURLs.find((meme) => {
         return meme.id === id;
     });
     img.src = chosenMemeImg.url;
@@ -56,7 +57,7 @@ function onUploadSavedMeme(id) {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, canvasHeight);
     }
-    
+
 }
 
 function drawImg() {
@@ -65,7 +66,6 @@ function drawImg() {
         return gMeme.selectedImgId === img.id;
     })
     img.src = selectedImg.url;
-    console.log(img.src);
     var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
     gElCanvas.height = canvasHeight;
     img.onload = () => {
@@ -78,7 +78,7 @@ function drawText() {
     var currText = document.querySelector(currInputTxtVal).value;
 
     gMeme.lines[gMeme.selectedLineIdx].txt = currText;
-    
+
     gMeme.lines.map((line) => {
         var posX = line.pos.x;
         var posY = line.pos.y;
@@ -110,12 +110,13 @@ function removeLine() {
 function addLineObject() {
     if (gMeme.lines.length === 2) return;
     var newLine = {
+        isDragging: false,
         txt: '',
         size: 40,
         align: 'left',
         color: 'white',
         font: 'impact',
-        pos: (gElCanvas.height === 300)  ? { x: 250, y: 400 } : { x: 250, y:290 },
+        pos: (gElCanvas.height === 300) ? { x: 250, y: 400 } : { x: 250, y: 290 },
     };
     gMeme.lines.push(newLine);
 }
@@ -128,15 +129,17 @@ function downloadCanvas(elLink) {
 
 function changeTextColor(val) {
     gMeme.lines[gMeme.selectedLineIdx].color = val;
+    drawText()
 }
 
 function changeFont(val) {
     gMeme.lines[gMeme.selectedLineIdx].font = val;
+    drawText()
 }
 
-function setFilter(filter){
+function setFilter(filter) {
     if (!filter) gImgsFilter = 'all';
-    else gImgsFilter = filter;  
+    else gImgsFilter = filter;
 }
 
 function _saveMemeToStorage() {
