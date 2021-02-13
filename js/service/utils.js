@@ -8,3 +8,10 @@ function getHeightRatio(CW, IH, IW) {
 function getWidthRatio(CH, IH, IW) {
     return (CH * IH) / IW
 }
+
+function createImgURLObject(id, url) {
+    return {
+        id,
+        url,
+    }
+}

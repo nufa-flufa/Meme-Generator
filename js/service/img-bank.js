@@ -37,18 +37,3 @@ var gImgs = [
     { id: 34, url: "./meme-imgs/X-Everywhere.jpg", keywords: ['politics', 'trump','suit','angry']},
 ]
 _saveImgsToStorage()
-// var bla = createImgsArray()
-// console.log(gImgs)
-
-// function createImgsArray() {
-//     var imgs = []
-//     for (var i = 1; i <= 18; i++) {
-//         var img = {
-//             id: i,
-//             url: `./meme-imgs/${i}.jpg`,
-//             keywords: []
-//         }
-//         imgs.push(img)
-//     }
-//     return imgs
-// }

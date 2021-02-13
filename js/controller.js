@@ -13,6 +13,7 @@ function onInit() {
 
 function onChangeCanvas(ev) {
     ev.preventDefault();
+    drawText
     renderCanvas();
 }
 
@@ -20,7 +21,6 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     if (!gMeme.selectedImgId) return;
     drawImg();
-    console.log(gCtx)
     setTimeout(drawText, 100);
 }
 
@@ -49,12 +49,11 @@ function onRemoveText() {
 function onAddLine() {
     if (gMeme.lines.length === 2) return;
     var elForm = document.querySelector('form')
-    let newTxtLine = document.createElement('div')
-    var strHTML = `<input class="txt-input" type="text" placeholder="Write your text here" name="txt2">`
-    elForm.appendChild(newTxtLine).innerHTML = strHTML
+    var strHTML = `<input class="txt-input" type="text" placeholder="Write your text here" name="txt2" data-trans="txt-input">`
+    elForm.insertAdjacentHTML("beforeend", strHTML)
+    
     gMeme.selectedLineIdx += 1;
-    // elForm.appendChild(newTxtLine).style.grid = ''
-
+    document.querySelector(`input[name=txt2]`).style.border = '3px solid #2e1e31'
     addLineObject();
 }
 
@@ -75,42 +74,70 @@ function onMoveText(direction) {
 function onChangeLineFocus() {
     if (gMeme.selectedLineIdx === 1) {
         gMeme.selectedLineIdx = 0;
-        document.querySelector(`input[name=txt1]`).style.border = '2px solid #2e1e31';
-        document.querySelector(`input[name=txt2]`).style.border = 'none';
+        document.querySelector(`input[name=txt1]`).style.border = '3px solid #2e1e31';
+        document.querySelector(`input[name=txt2]`).style.border = '1px solid #2e1e31';
     }
     else {
         gMeme.selectedLineIdx = 1;
-        document.querySelector(`input[name=txt2]`).style.border = '2px solid #2e1e31';
-        document.querySelector(`input[name=txt1]`).style.border = 'none';
+        document.querySelector(`input[name=txt2]`).style.border = '3px solid #2e1e31';
+        document.querySelector(`input[name=txt1]`).style.border = '1px solid #2e1e31';
 
     }
 }
 
 function onOpenGalleryModal() {
-    document.querySelector('.imgs-gallery').style.display = 'grid'
-    document.querySelector('.canvas-container').style.display = 'none'
+    document.querySelector('.imgs-gallery').style.display = 'grid';
+    document.querySelector('.canvas-container').style.display = 'none';
+    document.querySelector('.user-memes').style.display = 'none';
 }
 
 function onDownloadCanvas(elLink) {
     console.log(elLink)
     downloadCanvas(elLink)
 }
+
 function onSaveMeme() {
     gUserMemes.push(gElCanvas.toDataURL())
     saveToStorage(USER_MEMES, gUserMemes)
 }
-function onLoadPicture() {
+
+function onLoadSavedMemes() {
     gUserMemes = loadFromStorage(USER_MEMES)
-    if(!gUserMemes && !gUserMemes.length) {
-        console.log('empty')
+    if (!gUserMemes && !gUserMemes.length) {
+        gUserMemes = [];
         return;
     }
     else {
-    //    gUserMemes = savedMemes
         loadSavedMemes()
     }
 }
 
+function onOpenUserMemesGallery() {
+    onLoadSavedMemes()
+    document.querySelector('.imgs-gallery').style.display = 'none';
+    document.querySelector('.canvas-container').style.display = 'flex';
+    document.querySelector('.user-memes').style.display = 'grid';
+}
+
+function onChangeTextColor(val){
+    changeTextColor(val)
+    renderCanvas()
+}
+
+function onChangeFont(val) {
+    changeFont(val);
+    renderCanvas();
+}
+
+function onSetLang(lang){
+    console.log(lang)
+    setLang(lang);
+    if (lang === 'he') document.body.classList.add('rtl')
+    else document.body.classList.remove('rtl')
+
+    doTrans();
+    
+}
 function addMouseListener() {
     window.addEventListener('mousedown', getPos)
 }
