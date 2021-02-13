@@ -40,7 +40,7 @@ a{
 }
 a:hover{
     border-bottom: none;
-    color: #772577;
+    color: #5C7C86;
 }
 ul{
     padding: 0;
@@ -89,7 +89,7 @@ button{
 /*  HEADER */
 
 .main-header{
-    background-color: #A680AE;
+    background-color: #802C00;
     margin: 0;
 }
 .main-nav{
@@ -131,8 +131,17 @@ button{
     width: 100%;
     object-fit: cover;
 }
+.file-input{
+    width: 300px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.btn.upload-btn{
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
 .search-nav{
-    background-color: #e4cbe9;
+    background-color: #5C7C86;
 }
 .search h3{
     margin-left:10px;
@@ -171,8 +180,8 @@ button{
     width: 3.75rem;
     border: none;
     border-radius:.6rem ;
-    background-color: #4E4351;
-    color: #FFE8FF;
+    background-color: #C0FAFF;
+    color: #5C7C86;
     cursor: pointer;
     outline: none;
     font-size: 2rem;
@@ -180,6 +189,9 @@ button{
 .btn:hover{
     background-color:#2e1e31 ;
     color: #e497e4;
+}
+.btn a{
+    font-size: 1.2rem;
 }
 .delete-btn img{
     height: 40px;
@@ -191,6 +203,10 @@ button{
 .download-btn a{
     height: 60px;
     width: 60px;
+    color: #5C7C86
+}
+.download-btn a:hover{
+    color:#e497e4;
 }
 
 form{
@@ -257,7 +273,7 @@ form{
   /* FOOTER */
 
 .main-footer{
-    background-color:#A680AE ;
+    background-color:#b1d4df ;
     position: relative;
     left: 0;
     bottom:0;

@@ -65,8 +65,6 @@ function getEvPos(ev) {
         }
     }
     return pos
-    // if (pos.y > 150 && pos.y < 205 && pos.x > 805 && pos.x < 1165) gMeme.selectedLineIdx = 0;
-    // console.log(pos)
 }
 
 function isTextClicked(clickedPos) {
