@@ -35,6 +35,63 @@ var gTrans = {
         en:'Write your text here',
         he:'הכנס טקסט כאן',
     },
+    funny:{
+        en: 'funny',
+        he:'מצחיק',
+    },
+    movie:{
+        en:'movie',
+        he:'סרט',
+    },
+    politics:{
+        en:'politics',
+        he:'פוליטיקה',
+    },
+    friendship:{
+        en:'friendship',
+        he:'חברות',
+    },
+    laugh:{
+        en:'laugh',
+        he:'צוחק',
+    },
+    baby:{
+        en:'baby',
+        he:'תינוק',
+    },
+    trump:{
+        en:'trump',
+        he:'טראמפ',
+    },
+    putin:{
+        en:'putin',
+        he:'פוטין',
+    },
+    sleep:{
+        en:'sleep',
+        he:'שינה',
+    },
+    work:{
+        en:'work',
+        he:'עבודה',
+    },
+    cute:{
+        en:'cute',
+        he:'חמוד',
+    },
+    puppy:{
+        en:'puppy',
+        he:'גור',
+    },
+    cat:{
+        en:'cat',
+        he:'חתול',
+    },
+    animal:{
+        en:'animal',
+        he:'חיה',
+    },
+    
 
 }
 
