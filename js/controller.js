@@ -17,10 +17,8 @@ function onChangeCanvas(ev) {
 }
 
 function renderCanvas() {
-    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     if (!gMeme.selectedImgId) return;
     drawImg();
-    // setTimeout(drawText, 100);
 }
 
 function renderImgGallery() {
