@@ -119,6 +119,7 @@ button{
     grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
     grid-template-rows: repeat(auto-fit,minmax(150px, 1fr));
     margin: 10px;
+    margin-bottom: 150px;
 }
 .imgs-gallery img{
     width: 100%;
@@ -259,6 +260,7 @@ form{
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     grid-auto-flow: dense;
     margin: 10px;
+    margin-bottom: 150px;
 }
 .user-memes >*{
     border-radius: 8px;
@@ -268,7 +270,7 @@ form{
 
 .main-footer{
     background-color:#b1d4df ;
-    position: relative;
+    position: fixed;
     left: 0;
     bottom:0;
     width: 100%;
@@ -422,7 +424,7 @@ form{
         flex-direction: column;
     }
     .control-board{
-        width: 400px;
+        width: 100%;
     }
 }
 
@@ -433,7 +435,6 @@ form{
        transform: translateX(-60px);
     }
     canvas{
-        /* width: 300px; */
         height: 300px;
     }
     .txt-input {
