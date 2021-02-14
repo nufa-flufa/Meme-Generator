@@ -162,15 +162,3 @@ function onUploadSavedMeme(id) {
     uploadSavedMeme(id)
 
 }
-// function addMouseListener() {
-//     window.addEventListener('mousedown', getPos);
-// }
-
-// function getPos(ev) {
-//     var pos = {
-//         x: ev.clientX,
-//         y: ev.clientY
-//     };
-//     // if (pos.y > 150 && pos.y < 205 && pos.x > 805 && pos.x < 1165) gMeme.selectedLineIdx = 0;
-//     // console.log(pos)
-// }

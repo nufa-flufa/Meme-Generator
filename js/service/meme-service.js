@@ -52,9 +52,9 @@ function uploadSavedMeme(id) {
         return meme.id === id;
     });
     img.src = chosenMemeImg.url;
-    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
-    gElCanvas.height = canvasHeight;
     img.onload = () => {
+        var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
+        gElCanvas.height = canvasHeight;
         gCtx.drawImage(img, 0, 0, gElCanvas.width, canvasHeight);
     }
 
