@@ -17,15 +17,14 @@ function onChangeCanvas(ev) {
 }
 
 function renderCanvas() {
-    gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
+    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
     if (!gMeme.selectedImgId) return;
     drawImg();
-    setTimeout(drawText, 100);
+    // setTimeout(drawText, 100);
 }
 
 function renderImgGallery() {
     gImgs = loadFromStorage(GALLERY_KEY);
-    console.log(gImgs)
     var strHTMLs = '';
     if (gImgsFilter === 'all') {
         document.querySelector('.search h3').style.display = 'none';
@@ -129,7 +128,7 @@ function onLoadSavedMemes() {
         return;
     }
     else {
-        loadSavedMemes();
+        loadToDOMSavedMemes();
     }
 }
 

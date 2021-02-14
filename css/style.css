@@ -421,6 +421,9 @@ form{
     ul.clean-list{
         flex-direction: column;
     }
+    .control-board{
+        width: 400px;
+    }
 }
 
 @media (max-width: 550px){

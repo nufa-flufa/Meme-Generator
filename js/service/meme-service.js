@@ -23,7 +23,7 @@ var gMeme = {
     ],
 }
 
-function loadSavedMemes() {
+function loadToDOMSavedMemes() {
     var strHTML = '';
     for (var i = 1; i <= gUserMemes.length; i++) {
         strHTML += `<canvas id="user-meme saved${i}" height="200" width="200" onclick="onUploadSavedMeme(${i})"></canvas>`
@@ -66,10 +66,11 @@ function drawImg() {
         return gMeme.selectedImgId === img.id;
     })
     img.src = selectedImg.url;
-    var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
-    gElCanvas.height = canvasHeight;
     img.onload = () => {
+        var canvasHeight = getHeightRatio(gElCanvas.width, img.height, img.width);
+        gElCanvas.height = canvasHeight;
         gCtx.drawImage(img, 0, 0, gElCanvas.width, canvasHeight);
+        drawText();
     }
 }
 
