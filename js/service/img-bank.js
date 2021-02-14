@@ -28,4 +28,3 @@ var gImgs = [
     { id: 25, url: "./meme-imgs/putin.jpg", keywords: ['putin', 'politics','suit','two','leader','russia']},
     { id: 26, url: "./meme-imgs/X-Everywhere.jpg", keywords: ['toy story','buzz','woody','movie', 'cartoon','friendship','everywhere']},
 ]
-_saveImgsToStorage();

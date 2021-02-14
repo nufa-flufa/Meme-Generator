@@ -25,6 +25,7 @@ function renderCanvas() {
 
 function renderImgGallery() {
     gImgs = loadFromStorage(GALLERY_KEY);
+    console.log(gImgs)
     var strHTMLs = '';
     if (gImgsFilter === 'all') {
         document.querySelector('.search h3').style.display = 'none';

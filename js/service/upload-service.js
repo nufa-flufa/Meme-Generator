@@ -9,16 +9,21 @@ function onImgInput(ev) {
 function loadImageFromInput(ev, onImageReady) {
 
     var reader = new FileReader()
-
+    console.log('hi')
     reader.onload = function (event) {
+        console.log('hello')
         var img = new Image()
         img.onload = onImageReady.bind(null, img)
         img.src = event.target.result
         var newImage = {
-            id: (gImgs[gImgs.length-1].id + 1),
+            id: (gImgs[gImgs.length - 1].id + 1),
             url: img.src,
+            keywords:['personal']
         }
+
         gImgs.push(newImage);
+        _saveImgsToStorage();
+        renderImgGallery();
         gMeme.selectedImgId = newImage.id;
     }
     reader.readAsDataURL(ev.target.files[0])
