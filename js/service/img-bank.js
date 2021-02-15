@@ -29,4 +29,5 @@ var gImgs = [
     { id: 26, url: "./meme-imgs/X-Everywhere.jpg", keywords: ['toy story','buzz','woody','movie', 'cartoon','friendship','everywhere']},
 ]
 
-// _saveImgsToStorage()
+
+_saveImgsToStorage()
